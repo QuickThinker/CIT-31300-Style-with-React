@@ -2,7 +2,7 @@ import React from "react";
 
 function Block(props) {
 
-    const [toggle, setToggle] = React.useState(false);
+     let [toggle, setToggle] = React.useState(0 );
 
     const [borderColor] = React.useState(props.borderColor);
     const [backColor] = React.useState(props.backgroundColor);
@@ -10,11 +10,11 @@ function Block(props) {
     let borCol;
     let bacCol;
 
-    if(toggle) {
+    if(toggle == 1) {
         borCol = "green";
         bacCol = "blue";
     }
-    else if(toggle) {
+    else if(toggle == 2) {
         borCol = "blue";
         bacCol = "red";
     }
@@ -22,7 +22,9 @@ function Block(props) {
         borCol ="red";
         bacCol = "green";
     }
-
+    if(toggle == 3) {
+        toggle = 0;
+    }
     const block = {
         margin: "20px",
         height: "100px",
@@ -48,7 +50,7 @@ function Block(props) {
         <div>
             <div style={block}> blocks 1 </div>
 
-            <div style={block2} onClick={()=>setToggle(!toggle)} > blocks 2 </div>
+            <div style={block2} onClick={()=>setToggle(toggle + 1)} > blocks 2 </div>
 
         </div>
     )
